@@ -90,6 +90,8 @@ public:
 	void BlitToEyeTexture(int eye);
 	void BlitFromEyeTexture(int eye);
 	void BindEyeTexture(int eye, int texunit);
+	int CurrentEye() const {return mCurrentEye;}
+	int NextEye(int eyeCount);
 
 	void BindDitherTexture(int texunit);
 
@@ -156,6 +158,7 @@ private:
 	// Eye buffers
 	TArray<PPGLTexture> mEyeTextures;
 	TArray<PPGLFrameBuffer> mEyeFBs;
+	int mCurrentEye = 0;
 
 	// Shadow map texture
 	PPGLTexture mShadowMapTexture;
