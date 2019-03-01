@@ -560,8 +560,8 @@ void FGLRenderBuffers::BlitFromEyeTexture(int eye)
 
 	if ((gl.flags & RFL_INVALIDATE_BUFFER) != 0)
 	{
-		GLenum attachments[2] = { GL_COLOR_ATTACHMENT0, GL_DEPTH_STENCIL_ATTACHMENT };
-		glInvalidateFramebuffer(GL_DRAW_FRAMEBUFFER, 2, attachments);
+		GLenum attachments[1] = { GL_COLOR_ATTACHMENT0 };
+		glInvalidateFramebuffer(GL_READ_FRAMEBUFFER, 1, attachments);
 	}
 
 	glBindFramebuffer(GL_READ_FRAMEBUFFER, 0);
