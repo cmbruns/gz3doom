@@ -87,7 +87,7 @@ public:
 
 	void BindOutputFB();
 
-	void BlitToEyeTexture(int eye);
+	void BlitToEyeTexture(int eye, bool allowInvalidate=true);
 	void BlitFromEyeTexture(int eye);
 	void BindEyeTexture(int eye, int texunit);
 	int NextEye(int eyeCount);

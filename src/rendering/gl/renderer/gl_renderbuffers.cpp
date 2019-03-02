@@ -532,7 +532,7 @@ void FGLRenderBuffers::BlitSceneToTexture()
 //
 //==========================================================================
 
-void FGLRenderBuffers::BlitToEyeTexture(int eye)
+void FGLRenderBuffers::BlitToEyeTexture(int eye, bool allowInvalidate)
 {
 	CreateEyeBuffers(eye);
 
@@ -540,7 +540,7 @@ void FGLRenderBuffers::BlitToEyeTexture(int eye)
 	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, mEyeFBs[eye].handle);
 	glBlitFramebuffer(0, 0, mWidth, mHeight, 0, 0, mWidth, mHeight, GL_COLOR_BUFFER_BIT, GL_NEAREST);
 
-	if ((gl.flags & RFL_INVALIDATE_BUFFER) != 0)
+	if ((gl.flags & RFL_INVALIDATE_BUFFER) != 0 && allowInvalidate)
 	{
 		GLenum attachments[2] = { GL_COLOR_ATTACHMENT0, GL_DEPTH_STENCIL_ATTACHMENT };
 		glInvalidateFramebuffer(GL_READ_FRAMEBUFFER, 2, attachments);
