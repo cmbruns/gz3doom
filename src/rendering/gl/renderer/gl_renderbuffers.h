@@ -90,8 +90,8 @@ public:
 	void BlitToEyeTexture(int eye);
 	void BlitFromEyeTexture(int eye);
 	void BindEyeTexture(int eye, int texunit);
-	int CurrentEye() const {return mCurrentEye;}
 	int NextEye(int eyeCount);
+	int & CurrentEye() { return mCurrentEye; }
 
 	void BindDitherTexture(int texunit);
 
