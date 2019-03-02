@@ -164,7 +164,7 @@ sector_t * FGLRenderer::RenderViewpoint (FRenderViewpoint &mainvp, AActor * came
 	// Fixme. The view offsetting should be done with a static table and not require setup of the entire render state for the mode.
 	auto vrmode = VRMode::GetVRMode(mainview && toscreen);
 	const int eyeCount = vrmode->mEyeCount;
-	mBuffers->CurrentEye() = 0;
+	mBuffers->CurrentEye() = 0;  // always begin at zero, in case eye count changed
 	for (int eye_ix = 0; eye_ix < eyeCount; ++eye_ix)
 	{
 		const auto &eye = vrmode->mEyes[mBuffers->CurrentEye()];
